@@ -1,0 +1,20 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/picarx/ros2_workspace/build/picarx_system_controller",
+        "/home/picarx/ros2_workspace/install/picarx_system_controller/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages",
+        "",
+        "/usr/local/lib/aarch64-linux-gnu/python3.10/site-packages",
+        "/home/picarx/kmsxx/build/py"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/picarx/ros2_workspace/build/picarx_system_controller",
+        "/home/picarx/ros2_workspace/install/picarx_system_controller/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages",
+        "",
+        "/usr/local/lib/aarch64-linux-gnu/python3.10/site-packages",
+        "/home/picarx/kmsxx/build/py"
+    ]
+}
