@@ -112,8 +112,8 @@ def main():
     print('ip : %s'%ip)
     sc.set('video','http://'+ip+':9000/mjpg')
 
-    #Vilib.camera_start(vflip=False,hflip=False)
-    #Vilib.display(local=False, web=True)
+    Vilib.camera_start(vflip=False,hflip=False)
+    Vilib.display(local=False, web=True)
     speak = None
     while True:
         # --- send data ---
@@ -192,7 +192,7 @@ def main():
 
         # image recognition
         # zperacha: comment out vilib dependencies
-        '''
+        
         if sc.get('N') == True:
             Vilib.color_detect(DETECT_COLOR)
         else:
@@ -209,7 +209,7 @@ def main():
             Vilib.object_detect_switch(False)
             
         # zperacha: video stream using opencv
-        '''
+        
         
         
 
