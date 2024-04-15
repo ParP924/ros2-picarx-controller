@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "test_node = picarx_system_controller.system_control_node_test:main",
-            "controller_node = picarx_system_controller.picarx_controller_node:main"
+            "controller_test_node = picarx_system_controller.system_control_node_test:main"
+#            "controller_node = picarx_system_controller.picarx_controller_node:main"
         ],
     },
 )

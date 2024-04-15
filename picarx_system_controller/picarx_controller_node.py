@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import rclpy
+from std_msgs.msg import Float32
 from sunfounder_controller import SunFounderController
 from picarx import Picarx
 from robot_hat import utils, Music
@@ -44,6 +45,25 @@ if os.geteuid() != 0:
     #_status, _result = utils.run_command('sudo killall pulseaudio')
     #music.sound_play_threading(f'{UserHome}/picar-x/sounds/car-double-horn.wav')
 
+def ACC_callback(fwd_distance):
+    # ACC callback
+    previous_distance = fwd_distance
+    
+    
+def follow_object():
+    # following object function
+    rclpy.init()
+    dist_subscriber = rclpy.create_node('distance_subscriber')
+    subscriber = dist_subscriber.create_subscription(Float32, '/forward_distance', ACC_callback, 10)
+    
+    try:
+        rclpy.spin(dist_subscriber)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        dist_subscriber.destroy_node()
+        rclpy.shutdown()
+    
 def avoid_obstacles():
     distance = px.get_distance()
     if distance >= SafeDistance:
@@ -107,6 +127,9 @@ def line_track():
 
 def main():
     global speed
+    global previous_distance
+    
+    previous_distance = 0
 
     ip = utils.get_ip()
     print('ip : %s'%ip)
@@ -156,7 +179,7 @@ def main():
             px.stop()
             
         '''
-
+        
         # line_track and avoid_obstacles
         line_track_switch = sc.get('I')
         avoid_obstacles_switch = sc.get('E')
@@ -207,8 +230,13 @@ def main():
             Vilib.object_detect_switch(True) 
         else:
             Vilib.object_detect_switch(False)
+
+        if sc.get('J') == True:
+            # ACC switch
+            follow_object()
+        else:
+            print("ACC switch is off\n")
             
-        # zperacha: video stream using opencv
         
         
         
